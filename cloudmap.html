@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/layout.css" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html ,body{
+            height:100%;
+            width:100%;
+            position: relative;
+        }
+        #china{
+            position: absolute;
+            top:0;
+            bottom: 0;
+            left:0;
+            right:0;
+            margin: auto;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="nav">
+	<ul class="menu">
+		<li class="btn"><a href="index.html">前十排名</a></li>
+		<li class="btn"><a href="cloudmap.html#china">云图</a></li>
+		<li class="btn"><a href="busLines.html">公交线路图</a></li>
+		<li class="btn"><a href="dashboard.html">仪表盘</a></li>
+		<li class="btn"><a href="heatmap-datazoom.html">热力图（缩放）</a></li>
+		<li class="btn"><a href="heatmap-timer.html">热力图（定时）</a></li>
+		<li class="btn"><a href="scatter-datazoom.html">散点图（缩放）</a></li>
+		<li class="btn"><a href="scatter-timer.html">散点图（定时）</a></li>
+		<li class="btn"><a href="startToEnd.html">起点到终点</a></li>
+	</ul>
+</div>
+<div id="china"></div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="script/echarts.js"></script>
+<script src="//echarts.baidu.com/christmas/echarts-wordcloud.min.js
+"></script>
+<script>
+    var clondMap=echarts.init(document.getElementById('china'));
+    var imageUrl='images/china.png';
+    var china=$('#china');
+    var width=window.innerHeight/660*810;
+    var height=window.innerHeight;
+
+    $.ajax({
+        url:'http://10.0.11.201:8899/keyword/top',
+        method:'get',
+    }).done(function (result) {
+        var temp=result;
+        //console.log(temp);
+        initCloudMap(temp)
+    })
+    function initCloudMap(resultData) {
+        var data = [];
+        var length=resultData.length;
+        for (var i=0;i<length ;i++) {
+            data.push({
+                name: resultData[i][0],
+                value: resultData[i][1]
+            })
+        }
+        console.log(data);
+        var maskImage = new Image();
+        var option = {
+            tooltip: {
+                show: true
+            },
+            series: [{
+                type: 'wordCloud',
+                gridSize: 1,
+                sizeRange: [10, 35],
+                rotationRange: [0, 90],
+                rotationStep: 90,
+                maskImage: maskImage,
+                textStyle: {
+                    normal: {
+                        color: function(v) {
+                            if (v.value > 500) {
+                                return 'rgb(0, 116, 111)';
+                            } else if (v.value > 350) {
+                                return 'rgb(0, 156, 147)';
+                            } else if (v.value > 200) {
+                                return 'rgb(70, 209, 133)';
+                            } else {
+                                return 'rgb(20, 186, 167)';
+                            }
+                        }
+                    }
+                },
+                width: width,
+                height: height,
+                data: data
+            }]
+        };
+        maskImage.onload = function () {
+            //option.series[0].maskImage=maskImage;
+            clondMap.setOption(option);
+        }
+
+        maskImage.src = imageUrl;
+        window.onresize = function () {
+            clondMap.resize();
+        }
+    }
+
+</script>
+</body>
+</html>

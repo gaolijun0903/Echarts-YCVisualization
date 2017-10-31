@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>业务数据</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <!-- 引入 ECharts 文件 -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="script/echarts.js"></script>
+</head>
+<body>
+
+ <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <!-- <div id="main" style="width: 900px;height:600px;"></div> -->
+    <div id="main" style="width: 100%;height:600px"></div>
+    
+<div class="nav">
+	<ul class="menu">
+		<li class="btn"><a href="index.html">前十排名</a></li>
+		<li class="btn"><a href="cloudmap.html#china">云图</a></li>
+		<li class="btn"><a href="busLines.html">公交线路图</a></li>
+		<li class="btn"><a href="dashboard.html">仪表盘</a></li>
+		<li class="btn"><a href="heatmap-datazoom.html">热力图（缩放）</a></li>
+		<li class="btn"><a href="heatmap-timer.html">热力图（定时）</a></li>
+		<li class="btn"><a href="scatter-datazoom.html">散点图（缩放）</a></li>
+		<li class="btn"><a href="scatter-timer.html">散点图（定时）</a></li>
+		<li class="btn"><a href="startToEnd.html">起点到终点</a></li>
+	</ul>
+</div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option ;
+        option = {
+                    backgroundColor: '#1b1b1b',
+                    tooltip : {
+                        formatter: "{a} <br/>{c} {b}"
+                    },
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            mark : {show: true},
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    series : [
+                         {
+                            name:'下单量',
+                            type:'gauge',
+                            center : ['25%', '25%'],    // 默认全局居中
+                            radius : '30%',
+                            // startAngle:270,
+                            // endAngle:90,
+                            // z: 3,
+                            min:0,
+                            max:500,
+                            splitNumber:10,
+                            axisLine: {            // 坐标轴线
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                                    width: 3,
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            axisTick: {            // 坐标轴小标记
+                                length :8,        // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: 'auto',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            splitLine: {           // 分隔线
+                                length :15,         // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                    width:2,
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            pointer: {           // 指针
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5,
+                            },
+                            title : {
+                                show:false
+                            },
+                            detail : {
+                                show:false
+                            },
+                            data:[{value: 0, name: ''}]
+                        },{
+                            name:'订单量',
+                            type:'gauge',
+                            center : ['25%', '25%'],    // 默认全局居中
+                            radius : '30%',
+                            min:0,
+                            max:500,
+                            splitNumber:10,
+                            axisLine: {            // 坐标轴线
+                                 lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                                    width: 3
+                                }
+                            },
+                            axisTick: {            // 坐标轴小标记
+                                length :8,        // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: 'auto',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            splitLine: {           // 分隔线
+                                length :15,         // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                    width:2,
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            pointer: {           // 指针
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5,
+                                width:6
+                            },
+                            title : {
+                               show:false
+                            },
+                            detail : {
+                                show:false
+                            },
+                            data:[{value: 0, name: ''}]
+                        },{
+                            name:'成单率',
+                            type:'gauge',
+                            center : ['50%', '25%'],    // 默认全局居中
+                            radius : '30%',
+                            axisLine: {            // 坐标轴线
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                                    width: 3,
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            axisTick: {            // 坐标轴小标记
+                                length :8,        // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: 'auto',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            splitLine: {           // 分隔线
+                                length :15,         // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                    width:2,
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            pointer: {           // 指针
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5
+                            },
+                            title : {
+                                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                    fontWeight: 'bolder',
+                                    fontSize: 18,
+                                    fontStyle: 'italic',
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            detail : {
+                                width:60,
+                                height:35,
+                                offsetCenter: [-5, '65%'],       // x, y，单位px
+                                // backgroundColor: 'rgba(30,144,255,0.8)',
+                                // borderWidth: 1,
+                                // borderColor: '#fff',
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5,
+                                offsetCenter: [0, '50%'],       // x, y，单位px
+                                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                    fontSize: 22,
+                                    // fontWeight: 'bolder',
+                                    color: '#fff'
+                                },
+                                formatter:'{value}%'
+                            },
+                            data:[{value: 0, name: '成单率'}]
+                        },
+                        {
+                            name:'司机UV',
+                            type:'gauge',
+                            center : ['25%', '55%'],    // 默认全局居中
+                            radius : '30%',
+                            min:0,
+                            max:100,
+                            splitNumber:10,
+                            axisLine: {            // 坐标轴线
+                                 lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                                    width: 3,
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            axisTick: {            // 坐标轴小标记
+                                length :8,        // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: 'auto',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            splitLine: {           // 分隔线
+                                length :15,         // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                    width:2,
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            pointer: {           // 指针
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5,
+                                width:6
+                            },
+                            title : {
+                                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                    fontWeight: 'bolder',
+                                    fontSize: 14,
+                                    fontStyle: 'italic',
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            detail : {
+                                show:false
+                            },
+                            data:[{value: 0, name: 'UV/K'}]
+                        },
+                        {
+                            name:'乘客UV',
+                            type:'gauge',
+                            center : ['25%', '55%'],    // 默认全局居中
+                            radius : '30%',
+                            min:0,
+                            max:100,
+                            splitNumber:10,
+                            axisLine: {            // 坐标轴线
+                                 lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                                    width: 3
+                                }
+                            },
+                            axisTick: {            // 坐标轴小标记
+                                length :8,        // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: 'auto',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            splitLine: {           // 分隔线
+                                length :15,         // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                    width:2,
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            pointer: {           // 指针
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5
+                            },
+                            title : {
+                                show:false
+                            },
+                            detail : {
+                                show:false
+                            },
+                            data:[{value: 0, name: ''}]
+                        },
+                        {
+                            name:'派单量',
+                            type:'gauge',
+                            center : ['50%', '55%'],    // 默认全局居中
+                            radius : '30%',
+                            min:0,
+                            max:150,
+                            splitNumber:10,
+                            axisLine: {            // 坐标轴线
+                                 lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                                    width: 3,
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            axisTick: {            // 坐标轴小标记
+                                length :8,        // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: 'auto',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            splitLine: {           // 分隔线
+                                length :15,         // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                    width:2,
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            pointer: {           // 指针
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5
+                            },
+                            title : {
+                                show:false,
+                                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                    fontWeight: 'bolder',
+                                    fontSize: 18,
+                                    fontStyle: 'italic',
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            detail : {
+                                show:false,
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5,
+                                offsetCenter: [0, '50%'],       // x, y，单位px
+                                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                    fontWeight: 'bolder',
+                                    fontSize: 22,
+                                    color: '#fff'
+                                }
+                            },
+                            data:[{value: 0, name: '派单量'}]
+                        },
+                        {
+                            name:'决策量',
+                            type:'gauge',
+                            center : ['50%', '55%'],    // 默认全局居中
+                            radius : '30%',
+                            min:0,
+                            max:150,
+                            splitNumber:10,
+                            axisLine: {            // 坐标轴线
+                                 lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: [[0.09, 'lime'],[0.82, '#1e90ff'],[1, '#ff4500']],
+                                    width: 3
+                                }
+                            },
+                            axisTick: {            // 坐标轴小标记
+                                length :8,        // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle控制线条样式
+                                    color: 'auto',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            splitLine: {           // 分隔线
+                                length :15,         // 属性length控制线长
+                                lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
+                                    width:2,
+                                    color: '#fff',
+                                    shadowColor : '#fff', //默认透明
+                                    shadowBlur: 10
+                                }
+                            },
+                            pointer: {           // 指针
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5,
+                                width:5
+                            },
+                            title : {
+                                show:false
+                            },
+                            detail : {
+                                show:false,
+                                shadowColor : '#fff', //默认透明
+                                shadowBlur: 5,
+                                offsetCenter: [0, '50%'],       // x, y，单位px
+                                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                                    fontWeight: 'bolder',
+                                    fontSize: 22,
+                                    color: '#fff'
+                                }
+                            },
+                            data:[{value: 0, name: '决策量'}]
+                        }
+                    ]
+                };
+        
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        clearInterval(timeTicket);
+        var timeTicket = setInterval(function (){
+           updateData();
+        },1000);
+
+        function updateData(){
+            $.ajax({
+                url: 'http://10.0.11.201:8899/dashboard',
+                type: 'get',
+                success: function(data) {
+                    option.series[0].data[0].value = data.orders.preorder;
+                    option.series[1].data[0].value = data.orders.order;
+                    option.series[2].data[0].value = (data.orders.orderpercent*100).toFixed(2);
+                    option.series[3].data[0].value = data.UV.driverUV;
+                    option.series[4].data[0].value = data.UV.passegerUV;
+                    option.series[5].data[0].value = (data.dispatch.dispatchs/100).toFixed(2);
+                    option.series[6].data[0].value = (data.dispatch.success/100).toFixed(2);
+                    myChart.setOption(option, true);
+                },
+                error: function(e) {
+                    alert(e);
+                }
+            });
+        }
+        updateData();   
+
+    </script>
+</body>
+</html>

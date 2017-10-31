@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>业务数据</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/countdown.css" rel="stylesheet">
+    <link href='//cdn.webfont.youziku.com/webfonts/nomal/96071/47031/58bd3523f629da187c87f3b1.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+    <div class="header">
+        <div class="menu">
+            <div class="btn" onclick="circleInitData('preorderstats')">预下单</div>
+            <div class="btn" onclick="circleInitData('orderstats')">订单</div>
+            <div class="btn" onclick="circleInitData('endorderstats')">结单</div>
+            <div class="btn" onclick="circleInitData('endorderfeesstats')">结单费用</div>
+            <div class="btn" onclick="circleInitData('endordermilesstats')">结单距离</div>
+        </div>
+        <div class="total-number"><span id="typeName"></span><span id="number"></span><span id="unit"></span></div>
+    </div>
+    <div class="nav">
+    	<ul class="menu">
+    		<li class="btn"><a href="index.html">前十排名</a></li>
+			<li class="btn"><a href="cloudmap.html#china">云图</a></li>
+			<li class="btn"><a href="busLines.html">公交线路图</a></li>
+			<li class="btn"><a href="dashboard.html">仪表盘</a></li>
+			<li class="btn"><a href="heatmap-datazoom.html">热力图（缩放）</a></li>
+			<li class="btn"><a href="heatmap-timer.html">热力图（定时）</a></li>
+			<li class="btn"><a href="scatter-datazoom.html">散点图（缩放）</a></li>
+			<li class="btn"><a href="scatter-timer.html">散点图（定时）</a></li>
+			<li class="btn"><a href="startToEnd.html">起点到终点</a></li>
+    	</ul>
+    </div>
+    <div  class="content">
+        <div id="bigMap" class="big-map"></div>
+        <div id="smallMap" class="small-map"></div>
+        <div id="lineArea" class="line-area"></div>
+    </div>
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="script/countUp.js"></script>
+    <script src="script/move.js"></script>
+    <script src="script/underscore-1.5.2-min.js"></script>
+    <script src="script/countdown.js"></script>
+    <!--<script src="script/vue.js"></script>-->
+    <script src="script/echarts.js"></script>
+    <script src="script/index.js"></script>
+</body>
+</html>

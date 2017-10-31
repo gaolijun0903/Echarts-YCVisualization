@@ -1,0 +1,204 @@
+.header{
+    position: absolute;
+    top:0;
+    width: 100%;
+    height:80px;
+    z-index: 10;
+}
+.nav{
+    position: absolute;
+    top:10%;
+    left: 0;
+    width: 200px;
+    height:80%;
+    z-index: 10;
+}
+.nav a{
+	display: block;
+	width: 100%;
+}
+.content{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    background-image: url('../images/sky.jpg');
+    background-size:100% 100%;
+}
+@keyframes opacityzerotoone {
+    from{opacity: 0}
+    to{opacity: 1}
+}
+@-webkit-keyframes opacityzerotoone {
+    from{opacity: 0}
+    to{opacity: 1}
+}
+
+.big-map{
+    position: absolute;
+    margin: auto;
+    width: 55%;
+    height:95%;
+    left:0;
+    /*animation: opacityzerotoone 5s;*/
+    /*-webkit-animation: opacityzerotoone 5s;*/
+}
+.small-map{
+    position: absolute;
+    top:2%;
+    right:5%;
+    bottom:10%;
+    width: 30%;
+    color:white;
+}
+.menu{
+    opacity: 0;
+    position: absolute;
+    height:100%;
+    width: 40%;
+    left:200px;
+    color:#ffffff;
+    font-size: 32px;
+    line-height: 80px;
+}
+.menu:hover{
+    animation: opacityzerotoone 2s;
+    -webkit-animation: opacityzerotoone 2s;
+    opacity: 1;
+}
+.nav .menu{
+	left: 0;
+}
+.op{
+    opacity: 1;
+    position: absolute;
+    height:100%;
+    width: 30%;
+    right:0;
+    color:#ffffff;
+    font-size: 32px;
+    line-height: 80px;
+}
+
+.btn{
+    width: 100px;
+    height:40px;
+    background:#3D5B99;
+    display: inline-block;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+}
+.nav .btn{
+	width: 200px;
+	display: block;
+}
+.total-number{
+    position: absolute;
+    right:0;
+    font-size: 30px;
+    height:80px;
+    line-height: 80px;
+    width: 40%;
+    margin-right: 5%;
+    color:#1BC53E;
+    text-align: right;
+    font-family:'COCOGOOSE94840db5f17747';
+    letter-spacing: 1rem;
+}
+.line-area{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
+}
+.heat-map{
+    width: 100%;
+    height:100%;
+}
+.star-map{
+    width: 100%;
+    height: 100%;
+}
+.star-map2{
+    height:85%;
+}
+.current-time{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 25px;
+    color:#00CD9A;
+}
+.anchorBL{
+    display: none;
+}
+
+.timer{
+	width: 100px;
+	height: 50px;
+	color: 	#8968CD;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 10px;
+	cursor: pointer;
+	position: absolute;
+	right: 10px;
+	bottom: 20px;
+	background: #C7C7C7;
+	animation: opacityzerotoone 9s;
+    -webkit-animation: opacityzerotoone 9s;
+}
+
+/*弹幕*/
+.show_opt{
+	width: 50px;
+    height: 30px;
+    color:	#8968CD;
+    background:#C7C7C7;
+	line-height:30px;
+	padding:0 10px;
+	border-radius: 15px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.slade_div{
+	width: 100%;
+    height: 50%;
+    position: absolute;
+    top: 80px;
+	background: rgba(0,0,0,0.5);
+}
+.slade_div .close_opt{
+	display:block;
+	background:red;
+	line-height:40px;
+	text-align:center;
+	width:40px;
+	height:40px;
+	color:#fff;
+	border-radius:20px;
+	position:absolute;
+	right:10px;
+	top:5px;
+	font-size:26px;
+}
+.slade_div ul{
+	height:100%;
+	overflow:hidden;
+}
+.slade_div ul li{
+	list-style:none;
+	color:#fff;
+	position:absolute;
+	font-size:18px;
+	white-space:nowrap;
+	/*font-weight:bold;*/
+}
+

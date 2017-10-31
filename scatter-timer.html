@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>业务数据</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/countdown.css" rel="stylesheet">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+</head>
+<body>
+<div class="header">
+    <!--<div class="title">线上数据监控</div>-->
+    <!--<div class="total-number">总订单数：<span id="number">12345678</span></div>-->
+</div>
+<div class="nav">
+	<ul class="menu">
+		<li class="btn"><a href="index.html">前十排名</a></li>
+		<li class="btn"><a href="cloudmap.html#china">云图</a></li>
+		<li class="btn"><a href="busLines.html">公交线路图</a></li>
+		<li class="btn"><a href="dashboard.html">仪表盘</a></li>
+		<li class="btn"><a href="heatmap-datazoom.html">热力图（缩放）</a></li>
+		<li class="btn"><a href="heatmap-timer.html">热力图（定时）</a></li>
+		<li class="btn"><a href="scatter-datazoom.html">散点图（缩放）</a></li>
+		<li class="btn"><a href="scatter-timer.html">散点图（定时）</a></li>
+		<li class="btn"><a href="startToEnd.html">起点到终点</a></li>
+	</ul>
+</div>
+<div  class="content">
+    <div id="starMap" class="star-map"></div>
+    <div id="currentTime" class="current-time"></div>
+    <div id="danmu"></div>
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="script/echarts.js"></script>
+<script src="script/bmap.js"></script>
+<script src="script/jquery.danmu.js"></script>
+<script src="script/scatter-timer.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>业务数据</title>
+    <link href="css/base.css" rel="stylesheet">
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/layout.css" rel="stylesheet">
+    <link href="css/countdown.css" rel="stylesheet">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+</head>
+<body>
+<div class="header">
+    <div class="menu">
+        <div class="btn" onclick="circleInitData('bj')">北京</div>
+        <div class="btn" onclick="circleInitData('sh')">上海</div>
+        <div class="btn" onclick="circleInitData('gz')">广州</div>
+        <div class="btn" onclick="circleInitData('sz')">深圳</div>
+    </div>
+    <div class="op">
+        <div class="btn" onclick="stop('')">暂停</div>
+        <div class="btn" onclick="start('')">播放</div>
+        <div class="btn" onclick="speed('')">快进</div>
+    </div>
+</div>
+<div class="nav">
+	<ul class="menu">
+		<li class="btn"><a href="index.html">前十排名</a></li>
+		<li class="btn"><a href="cloudmap.html#china">云图</a></li>
+		<li class="btn"><a href="busLines.html">公交线路图</a></li>
+		<li class="btn"><a href="dashboard.html">仪表盘</a></li>
+		<li class="btn"><a href="heatmap-datazoom.html">热力图（缩放）</a></li>
+		<li class="btn"><a href="heatmap-timer.html">热力图（定时）</a></li>
+		<li class="btn"><a href="scatter-datazoom.html">散点图（缩放）</a></li>
+		<li class="btn"><a href="scatter-timer.html">散点图（定时）</a></li>
+		<li class="btn"><a href="startToEnd.html">起点到终点</a></li>
+	</ul>
+</div>
+<div id="content" class="content">
+    <div id="heatMap" class="star-map"></div>
+    <div id="currentTime" class="current-time"></div>
+    <div id="timeLine" class="line-area"></div>
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="script/echarts.js"></script>
+<script src="script/bmap.js"></script>
+<script src="script/heatmap-timer.js"></script>
+</body>
+</html>
